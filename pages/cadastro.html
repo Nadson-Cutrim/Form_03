@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="shortcut icon" href="img/Ilustration.svg">
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="../img/Ilustration.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
@@ -39,6 +39,7 @@
             <div class="form-grupo">
                 <label for="cpf">CPF:</label>
                 <input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" required maxlength="14" onkeyup="this.value=formatarCPF(this.value)">
+                <span class="mensagem-erro"></span>
             </div>
     
             <div class="form-grupo">
@@ -53,16 +54,13 @@
     
             <div class="form-grupo">
                 <label for="email">E-mail:</label> 
-                <input type="email" id="email" name="email" value="" placeholder="name@gmail.com" required>
-                <div class="icons">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50"><path fill="#DC2626" d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17s-7.6 17-17 17m0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15s15-6.7 15-15s-6.7-15-15-15"/><path fill="#DC2626" d="M24 32h2v2h-2zm1.6-2h-1.2l-.4-8v-6h2v6z"/></svg>
-                    <small>Insira um e-mail válido</small>
-                </div>
+                <input type="email" id="email" name="email" value="" placeholder="name@gmail.com / name@hotmail.com" required>
+                <span class="mensagem-erro"></span>
             </div>
     
             <div class="form-grupo">
                 <label for="telefone">Telefone:</label>
-                <input type="tel" id="tel" name="telefone" value="" placeholder="(xx) x xxxx-xxxx">
+                <input type="tel" id="tel" name="telefone" value="" placeholder="(xx) x xxxx-xxxx" required maxlength="15">
             </div>
     
             <div class="form-grupo">
@@ -78,7 +76,7 @@
             <div class="form-grupo">
                 <label for="documento">Documento de identidade:</label>
                 <div class="upload-box">
-                    <img src="img/cloud-upload.svg" alt="Upload">
+                    <img src="../img/cloud-upload.svg" alt="Upload">
                     <p>Clique aqui para selecionar o arquivo</p>
                 </div>
             </div>
@@ -140,7 +138,7 @@
             <div class="form-grupo">
                 <label for="comprovante">Comprovante de residência:</label>
                 <div class="upload-box">
-                    <img src="img/cloud-upload.svg" alt="Upload">
+                    <img src="../img/cloud-upload.svg" alt="Upload">
                     <p>Clique aqui para selecionar o arquivo</p>
                 </div>
             </div>
@@ -150,32 +148,32 @@
             
                 <div class="form-trilhas">            
                     <label class="box">
-                        <img src="img/front-icon.svg" alt="Front-end">
+                        <img src="../img/front-icon.svg" alt="Front-end">
                         <h3>Programação Front-end</h3>
                         <input type="radio" id="front" name="curso" value="front">
                     </label>
 
                     <label class="box"> 
-                        <img src="img/back-icon.svg" alt="Back-end">
+                        <img src="../img/back-icon.svg" alt="Back-end">
                         <h3>Programação Back-end</h3>
                         
                         <input type="radio" id="back" name="curso" value="back">
                     </label>
 
                     <label class="box"> 
-                        <img src="img/icon-dados.svg" alt="dados">
+                        <img src="../img/icon-dados.svg" alt="dados">
                         <h3>Ciência de Dados</h3>  
                         <input type="radio" id="full" name="curso" value="dados">
                     </label>
 
                     <label class="box"> 
-                        <img src="img/icon-game.svg" alt="jogos">
+                        <img src="../img/icon-game.svg" alt="jogos">
                         <h3>Programação de Jogos</h3>
                         <input type="radio" id="jogos" name="curso" value="jogos">
                     </label>
 
                     <label class="box">
-                        <img src="img/ux-icon.svg" alt="UX  Design">
+                        <img src="../img/ux-icon.svg" alt="UX  Design">
                         <h3>Design e Experiência</h3>
                         <input type="radio" id="ux" name="curso" value="Ux">
                     </label>
@@ -200,11 +198,11 @@
     </section>
 
     <section class="box-img">
-        <img src="img/Ilustration.svg" alt="Ilustração de uma pessoa programando">
-        <img src="img/logo-trilhas-inova.svg" alt="Logo do Trilhas">
+        <img src="../img/Ilustration.svg" alt="Ilustração de uma pessoa programando">
+        <img src="../img/logo-trilhas-inova.svg" alt="Logo do Trilhas">
     </section>
 
     <script src="https://kit.fontawesome.com/091f30ca3a.js" crossorigin="anonymous"></script>
-    <script src="js/cadastro.js"></script>
+    <script src="../js/cadastro.js"></script>
 </body>
 </html>

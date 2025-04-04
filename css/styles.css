@@ -143,11 +143,11 @@ input[type="email"]{
     border-width: 0.1vmax;
 }
 
-.form-grupo .icons{
+.form-grupo span{
     position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: var(--semantic-error);
 }
 
 .form-grupo .upload-box{
