@@ -57,7 +57,11 @@ body{
 .box-index h2{
     font-size: 1.2vmax;
 }
-
+.box-index p{
+    font-size: 1vmax;
+    color: var(--smoker);
+    margin-top: 2vh;
+}
 .button-login{
     width: 100%;
     padding: 15px;

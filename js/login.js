@@ -37,8 +37,27 @@ document.addEventListener('DOMContentLoaded', function () {
         // Impedir envio do formulário se houver erros
         if (!isValid) {
             event.preventDefault()
-        } else {
-            alert("Formulário enviado com sucesso!")
         }
     })
 })
+
+// Usando o localStorage para acessar a página login
+const loginForm = document.getElementById('form-login');
+const cpfInput = document.getElementById('cpf');
+const senhaInput = document.getElementById('senha');
+
+loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const cpfValue = cpfInput.value;
+    const senhaValue = senhaInput.value;
+
+    const storedData = JSON.parse(localStorage.getItem('formData')) || {};
+
+    if (cpfValue === storedData.cpf && senhaValue === storedData.senha) {
+        alert('Login realizado com sucesso!');
+        window.location.href = 'trilhas.html';
+    } else {
+        alert('CPF ou senha inválidos!');
+    }
+});

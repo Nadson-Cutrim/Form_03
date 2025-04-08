@@ -1,83 +1,4 @@
-
-//Função para formatar CPF 
-
-function formatarCPF(cpf) {
-    cpf = cpf.replace(/\D/g, '') // remove todos os caracteres que não são números
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2') // adiciona o primeiro ponto
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2') // adiciona o segundo ponto
-    cpf = cpf.replace(/(\d{3})(\d{2})$/, '$1-$2') // adiciona o hífen
-    return cpf
-}
-
-document.getElementById('cpf').addEventListener('input', function () {
-    this.value = formatarCPF(this.value)
-})
-
-//Função para validar o CPF 
-
-function validaNumerosRepetidos(cpf) {
-    const numerosRepetidos = [
-        '00000000000', '11111111111', '22222222222',
-        '33333333333', '44444444444', '55555555555',
-        '66666666666', '77777777777', '88888888888',
-        '99999999999'
-    ]
-    return numerosRepetidos.includes(cpf)
-}
-
-function validaPrimeiroDigito(cpf) {
-    let soma = 0, multiplicador = 10
-    for (let i = 0; i < 9; i++) {
-        soma += parseInt(cpf[i]) * multiplicador--
-    }
-    let resto = (soma * 10) % 11
-    return resto === 10 || resto === 11 ? 0 : resto !== parseInt(cpf[9])
-}
-
-function validaSegundoDigito(cpf) {
-    let soma = 0, multiplicador = 11
-    for (let i = 0; i < 10; i++) {
-        soma += parseInt(cpf[i]) * multiplicador--
-    }
-    let resto = (soma * 10) % 11
-    return resto === 10 || resto === 11 ? 0 : resto !== parseInt(cpf[10])
-}
-
-function ehUmCPF(cpfValue) {
-    const msg_span = document.querySelector('.mensagem-erro');
-
-    const cor = (validaNumerosRepetidos(cpfValue) || validaPrimeiroDigito(cpfValue) || validaSegundoDigito(cpfValue))
-        ? '#DC2626'
-        : '#16A34A'
-
-    const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50"><path fill="${cor}" d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17s-7.6 17-17 17m0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15s15-6.7 15-15s-6.7-15-15-15"/><path fill="${cor}" d="M24 32h2v2h-2zm1.6-2h-1.2l-.4-8v-6h2v6z"/></svg>`
-
-    const mensagem = (cor === '#DC2626') ? 'O CPF não existe' : 'O CPF é válido'
-
-    msg_span.innerHTML = `${icon} ${mensagem}`
-    msg_span.style.color = cor
-}
-
-
-document.getElementById('cpf').addEventListener('input', (e) => {
-    let cpfValue = e.target.value.replace(/\D/g, '')
-    if (cpfValue.length === 11) {
-        ehUmCPF(cpfValue);
-    }
-})
-
-//Função para formatar CEP
-
-function formatarCEP(cep) {
-    cep = cep.replace(/\D/g, '') // remove todos os caracteres que não são números
-    return cep
-}
-
-document.getElementById('cep').addEventListener('input', function () {
-    this.value = formatarCEP(this.value)
-})
-
-//Função para formatar NOMES
+//================================ Função para formatar NOME ===================================
 
 function formatarTexto(texto) {
     texto = texto.replace(/[^a-zA-ZÀ-ÿ\s]/g, '') // Remove tudo que não for letra ou espaço
@@ -88,39 +9,304 @@ document.getElementById('nome').addEventListener('input', function () {
     this.value = formatarTexto(this.value)
 })
 
-//Função para validção das senhas
+//============================== Função para Validar DATA ======================================
 
-const setSenha1 = document.getElementById('senha')
-const setSenha2 = document.getElementById('confirSenha')
+document.getElementById('data_nascimento').addEventListener('input', function () {
+    const errorData = document.getElementById('errorData')
+    const dataInput = this.value // yyyy-mm-dd
 
-function validate() {
-    if (setSenha1.value === setSenha2.value) {
-        setSenha2.setCustomValidity('')
+    const ano = parseInt(dataInput.split('-')[0])
+
+    const isValid = ano >= 1900 && ano <= 2099
+
+    if (isValid) {
+        errorData.textContent = "✅ Ano é válido"
+        errorData.style.color = "#16A34A"
     } else {
-        setSenha2.setCustomValidity('As senhas digitadas não conferem')
+        errorData.textContent = "❌ Ano inválido (permitido: 1900–2099)"
+        errorData.style.color = "#DC2626"
     }
-    setSenha2.reportValidity()
+})
+
+//================================== Função para formatar CPF ================================
+
+function formatarCPF(cpf) {
+    cpf = cpf.replace(/\D/g, '') // remove tudo que não é número
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2')
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2')
+    cpf = cpf.replace(/(\d{3})(\d{2})$/, '$1-$2')
+    return cpf
 }
 
-setSenha2.addEventListener('input', validate)
+document.getElementById('cpf').addEventListener('input', function () {
+    this.value = formatarCPF(this.value)
 
-//Função para formatar o TELEFONE
+    const cpfValue = this.value.replace(/\D/g, '')
+    if (cpfValue.length === 11) {
+        CPFvalido(cpfValue)
+    }
+})
+
+function validaNumerosRepetidos(cpf) {
+    const repetidos = [
+        '00000000000', '11111111111', '22222222222',
+        '33333333333', '44444444444', '55555555555',
+        '66666666666', '77777777777', '88888888888',
+        '99999999999'
+    ]
+    return repetidos.includes(cpf)
+}
+
+function validarDigitos(cpf) {
+    // Primeiro dígito
+    let soma = 0
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf[i]) * (10 - i)
+    }
+    let dig1 = (soma * 10) % 11
+    if (dig1 === 10 || dig1 === 11) dig1 = 0
+    if (dig1 !== parseInt(cpf[9])) return false
+
+    // Segundo dígito
+    soma = 0
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf[i]) * (11 - i)
+    }
+    let dig2 = (soma * 10) % 11
+    if (dig2 === 10 || dig2 === 11) dig2 = 0
+    if (dig2 !== parseInt(cpf[10])) return false
+
+    return true
+}
+
+function CPFvalido(cpf) {
+    const errorCPF = document.getElementById('errorCPF')
+
+    if (!validaNumerosRepetidos(cpf) && validarDigitos(cpf)) {
+        errorCPF.textContent = "✅ CPF válido"
+        errorCPF.style.color = "#16A34A"
+    } else {
+        errorCPF.textContent = "❌ CPF inválido"
+        errorCPF.style.color = "#DC2626"
+    }
+}
+
+//============================== Função para Validar E-mail =================================
+
+document.getElementById('email').addEventListener('input', () => {
+    const errorEmail = document.getElementById('errorEmail')
+    const emailInput = document.getElementById('email').value
+
+    const isValid = validaEmail(emailInput)
+
+    if (isValid) {
+        errorEmail.textContent = "✅ E-mail é válido"
+        errorEmail.style.color = "#16A34A" // verde
+
+    } else {
+        errorEmail.textContent = "❌ E-mail é válido"
+        errorEmail.style.color = "#DC2626" // vermelho
+    }
+    console.log(isValid)
+})
+
+const validaEmail = (email) => {
+    const regex = /^[^\s]+@[^\s]+\.[^\s]+$/;
+    return regex.test(email)
+}
+
+//============================= Função para formatar o TELEFONE ===============================
+
+function validaNumerosRepetidosTel(tel) {
+    const repetidosTel = [
+        '00000000000', '11111111111', '22222222222',
+        '33333333333', '44444444444', '55555555555',
+        '66666666666', '77777777777', '88888888888',
+        '99999999999'
+    ]
+
+    return repetidosTel.includes(tel)
+}
 
 function formatarTelefone(telefone) {
     telefone = telefone.replace(/\D/g, '') // remove todos os caracteres que não são números
     telefone = telefone.replace(/^(\d{2})(\d)/, '($1) $2') // adiciona parênteses e espaço
     telefone = telefone.replace(/(\d{4})(\d{4})$/, '$1-$2') // adiciona hífen
     return telefone
-  }
-  document.getElementById('tel').addEventListener('input', function(){
+}
+
+const inputTel = document.getElementById('tel')
+
+inputTel.addEventListener('input', function () {
     this.value = formatarTelefone(this.value)
+
+    valiTel(this.value)
 })
 
-//Função para formatar E-mail
+function valiTel(tel) {
+    // remove tudo que não for número para fazer a validação
+    const numeros = tel.replace(/\D/g, '')
+    const errorTel = document.getElementById('errorTel')
 
-function formatarEmail(){
+    if (!validaNumerosRepetidosTel(numeros)) {
 
-    document.getElementById('email').addEventListener('input',() => {
-        
-    })
+        if (numeros.length === 10 || numeros.length === 11) {
+            errorTel.textContent = "✅ O número é válido"
+            errorTel.style.color = "#16A34A" // verde
+        } else {
+            errorTel.textContent = "❌ O número é inválido (quantidade insuficiente)"
+            errorTel.style.color = "#DC2626" // vermelho
+        }
+
+    } else {
+        errorTel.textContent = "❌ Número inválido (repetido)"
+        errorTel.style.color = "#DC2626" // vermelho
+    }
 }
+
+//============================= Função para validção das senhas ==============================
+const senhaInput = document.getElementById('senha')
+const confirmarInput = document.getElementById('confirmarSenha')
+
+senhaInput.addEventListener('input', () => {
+    validTamanhoSenha(senhaInput)
+})
+
+function validTamanhoSenha(senha) {
+    const tamSenha = senha.value
+
+    console.log(tamSenha)
+
+    if (tamSenha.length < 8) {
+        senha.setCustomValidity('A senha deve ter no mínimo 8 caracteres.')
+    } else {
+        senha.setCustomValidity('')
+    }
+    senha.reportValidity()
+}
+
+function validSenha() {
+    const errorSenha = document.querySelector('#errorSenha')
+  
+
+    if (senhaInput.value === confirmarInput.value) {
+        errorSenha.textContent = "✅ As senhas conferem"
+        errorSenha.style.color = "#16A34A" // verde
+
+    } else {
+        errorSenha.textContent = "❌ As senhas não conferem"
+        errorSenha.style.color = "#DC2626" // vermelho
+    }
+    
+}
+
+senhaInput.addEventListener('input', () => {
+    if (confirmarInput.value !== '') {
+        validSenha()
+    }
+})
+
+confirmarInput.addEventListener('input', validSenha)
+
+// Alternar visibilidade das senhas e ícones
+
+const toggleSenhaIcons = [
+    document.getElementById('toggleSenha'),
+    document.getElementById('toggleConfirmarSenha')
+]
+
+toggleSenhaIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+        const isPassword = senhaInput.type === 'password'
+
+        senhaInput.type = isPassword ? 'text' : 'password'
+        confirmarInput.type = isPassword ? 'text' : 'password'
+
+        toggleSenhaIcons.forEach(i => {
+            i.classList.toggle('fa-eye')
+            i.classList.toggle('fa-eye-slash')
+        })
+    })
+})
+
+//============================ Função para formatar CEP =======================================
+
+function validaNumerosRepetidosCep(cep) {
+    const repetidosCep = [
+        '00000000', '11111111', '22222222',
+        '33333333', '44444444', '55555555',
+        '66666666', '77777777', '88888888',
+        '99999999'
+    ]
+
+    return repetidosCep.includes(cep)
+}
+
+function formatarCEP(cep) {
+    cep = cep.replace(/\D/g, '') // Remove tudo que não for número
+    cep = cep.replace(/^(\d{5})(\d)/, '$1-$2') // Adiciona o hífen
+    return cep
+}
+
+const cepInput = document.getElementById('cep')
+const errorCEP = document.getElementById('errorCEP')
+
+cepInput.addEventListener('input', function () {
+    this.value = formatarCEP(this.value)
+    const numCep = this.value.replace(/\D/g, '')
+
+    if (!validaNumerosRepetidosCep(numCep)) {
+
+        // Validação quando tiver 9 caracteres (com hífen)
+        if (this.value.length === 9) {
+            errorCEP.textContent = "✅ CEP válido"
+            errorCEP.style.color = "#16A34A" // verde   
+        } else {
+            errorCEP.textContent = "❌ CEP inválido"
+            errorCEP.style.color = "#DC2626" // vermelho
+        }
+    }else{
+        errorCEP.textContent = "❌ CEP inválido números (repetidos)"
+        errorCEP.style.color = "#DC2626" // vermelho
+    }
+})
+
+//======================== Função para validar o campo de radio button =========================
+
+// Seleciona todos os radio buttons com o nome "curso"
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', function (event) {
+        const radioButtons = document.querySelectorAll('input[name="curso"]')
+        let checked = false
+
+        for (let i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                checked = true
+                break
+            }
+        }
+
+        if (!checked) {
+            alert('Por favor, selecione uma trilha de aprendizagem.')
+            event.preventDefault() // Impede o envio do formulário
+        }
+    })
+})
+
+//=========================== Função para validar se o usuário aceitou os termos ==========================
+
+const checkbox = document.getElementById('checkbox')
+const insc = document.getElementById('inscrever')
+
+checkbox.addEventListener('input', () => {
+    if (checkbox.checked) {
+        insc.style.pointerEvents = 'all'
+        insc.style.opacity = '1'
+    } else {
+        insc.style.pointerEvents = 'none'
+        insc.style.opacity = '0.5'
+    }
+})

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro</title>
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="shortcut icon" href="../img/Ilustration.svg">
+    <link rel="shortcut icon" href="img/Ilustration.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
@@ -33,45 +33,51 @@
     
             <div class="form-grupo">
                 <label for="data_nascimento">Data de nascimento:</label>
-                <input type="date" id="data_nascimento" name="data_nascimento" required>
+                <input type="date" id="data_nascimento" name="data_nascimento" required min="1900-01-01" max="2099-12-31">
+                <span class="mensagem-erro" id="errorData"></span>
             </div>
     
             <div class="form-grupo">
                 <label for="cpf">CPF:</label>
                 <input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" required maxlength="14" onkeyup="this.value=formatarCPF(this.value)">
-                <span class="mensagem-erro"></span>
+                <span class="mensagem-erro" id="errorCPF"></span>
             </div>
     
             <div class="form-grupo">
                 <label for="sexo">Sexo:</label>
                 <select id="sexo" name="sexo" required>
-                    <option disabled selected>Selecione</option>
+                    <option value="" disabled selected>Selecione</option>
                     <option value="feminino">Feminino</option>
                     <option value="masculino">Masculino</option>
                     <option value="outro">Outro</option>
                 </select>
             </div>
-    
+              
             <div class="form-grupo">
                 <label for="email">E-mail:</label> 
                 <input type="email" id="email" name="email" value="" placeholder="name@gmail.com / name@hotmail.com" required>
-                <span class="mensagem-erro"></span>
+                <span class="mensagem-erro" id="errorEmail"></span>
             </div>
     
             <div class="form-grupo">
                 <label for="telefone">Telefone:</label>
                 <input type="tel" id="tel" name="telefone" value="" placeholder="(xx) x xxxx-xxxx" required maxlength="15">
+                <span class="mensagem-erro" id="errorTel"></span>
             </div>
     
             <div class="form-grupo">
-                <label for="telefone">Senha:</label>
-                <input type="password" id="senha" name="senha" value="" placeholder="Digite sua senha" required>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" minlength="6" required>
+                <i id="toggleSenha" class="fa-regular fa-eye"></i>
+            </div>
+              
+            <div class="form-grupo">
+                <label for="confirmarSenha">Confirme sua senha:</label>
+                <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha" minlength="6" required>
+                <i id="toggleConfirmarSenha" class="fa-regular fa-eye"></i>
             </div>
 
-            <div class="form-grupo">
-                <label for="confimaSenha">Confirme sua senha:</label>
-                <input type="password" id="confirSenha" name="senha" placeholder="Confirme sua senha" required>
-            </div>
+            <span class="mensagem-erro" id="errorSenha"></span>              
 
             <div class="form-grupo">
                 <label for="documento">Documento de identidade:</label>
@@ -85,7 +91,8 @@
                 <h2>Endereço Residencial</h2>
 
                 <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" value="" placeholder="Digite seu CEP" required maxlength="8" onkeyup="this.value=formatarCEP(this.value)">
+                <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required maxlength="9">
+                <span class="mensagem-erro" id="errorCEP"></span>
             </div>
 
             <div class="form-grupo inline">
@@ -181,14 +188,14 @@
             </div>
 
             <div class="form-condicoes">
-                <input type="checkbox"name="termos">
+                <input type="checkbox" name="termos" id="checkbox">
                 <label>
                     Declaro que li e concordo com os <span>Termos e Condições</span> e com a <span>Politica de Privacidade.</span>
                 </label>
             </div>
 
             <div class="buttons">
-                <button type="submit" id="cancelar">Cancelar</button>
+                <button type="reset" onclick="window.location.href='login.html'">Cancelar</button>
                 <button type="submit" id="inscrever">Fazer Inscrição</button>
             </div>
             
@@ -204,5 +211,6 @@
 
     <script src="https://kit.fontawesome.com/091f30ca3a.js" crossorigin="anonymous"></script>
     <script src="../js/cadastro.js"></script>
+    <script src="../js/form.js"></script>
 </body>
 </html>

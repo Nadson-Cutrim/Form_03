@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +7,7 @@
 
 /* Variáveis globais */
 
-:root{
+:root {
     --white: #fff;
     --bg-img: #2135A6;
     --orange: #F3541c;
@@ -17,11 +17,11 @@
     --text-tertiary: #8F8881;
     --bg-disabled: #E7E5E4;
     --font: 'Poppins', sans-serif;
-    --smooth: 0.3s all ease; 
+    --smooth: 0.3s all ease;
     --text-small: 15px;
 }
 
-body{
+body {
     position: relative;
     width: 100vw;
     height: auto;
@@ -31,10 +31,9 @@ body{
     overflow-x: hidden;
 }
 
-
 /* ================ PRIMEIRO CONTAINER ============== */
 
-.box-form{
+.box-form {
     position: relative;
     width: 50vw;
     height: auto;
@@ -42,7 +41,7 @@ body{
     padding: 3vmax 6vmax;
 }
 
-.icon-voltar{
+.icon-voltar {
     position: relative;
     display: flex;
     justify-content: start;
@@ -57,13 +56,15 @@ body{
     transition-duration: 1s;
 
 }
-.icon-voltar:hover, .icon-voltar:hover h2{
+
+.icon-voltar:hover,
+.icon-voltar:hover h2 {
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
     background-color: var(--orange);
     color: var(--white);
 }
 
-.icon-voltar h2{
+.icon-voltar h2 {
     font-weight: 300;
     color: var(--text-primary);
     padding-left: 1vmax;
@@ -71,45 +72,56 @@ body{
     transition-duration: 1ms;
 }
 
-.text-title{
+.text-title {
     position: relative;
     width: 100%;
     height: auto;
     padding: 1.3vmax 0;
 }
 
-.text-title h1{
+.text-title h1 {
     font-size: 1.7vmax;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 0.5vmax;
 }
 
-.text-title p{
+.text-title p {
     font-size: 1.1vmax;
     font-weight: 400;
     color: var(--text-primary);
 }
 
-form h2{
+form h2 {
     font-size: 1.2vmax;
     font-weight: 600;
     color: var(--text-primary);
     margin: 2.2vmax 0 1.7vmax 0;
 }
 
-.form-grupo{
+.form-grupo {
     position: relative;
     width: inherit;
     height: auto;
     display: flex;
-    justify-content: baseline;
+    justify-content: start;
     align-items: start;
     flex-direction: column;
     margin: 2vmax 0;
 }
 
-.form-grupo input, select{
+.form-grupo .fa-eye,
+.fa-eye-slash {
+    position: absolute;
+    top: 60%;
+    left: 93%;
+    font-size: 1.1vmax;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.form-grupo input,
+select {
     position: relative;
     width: 100%;
     height: auto;
@@ -120,37 +132,40 @@ form h2{
     transition: border-color 0.3s ease;
 }
 
-.form-grupo input:focus, select:focus {
+.form-grupo input:focus,
+select:focus {
     box-shadow: 0 0 0 1px var(--orange);
     border-color: var(--orange);
     border-width: 0.1vmax;
     outline: none;
-    
+
 }
 
-.form-grupo label, option{
+.form-grupo label,
+option {
     color: var(--text-secondary);
     margin-bottom: 0.5vmax;
 }
 
-input[type="text"], input[type="date"],
-input[type="email"], input[type="tel"]{
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"] {
     color: var(--text-tertiary);
 }
 
-input[type="email"]{
-    border-color: var(--semantic-error);
+input[type="email"] {
     border-width: 0.1vmax;
 }
 
-.form-grupo span{
+.form-grupo span {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.form-grupo .upload-box{
+.form-grupo .upload-box {
     position: relative;
     display: flex;
     justify-content: center;
@@ -162,21 +177,24 @@ input[type="email"]{
     border-radius: 10px;
     cursor: pointer;
 }
-.upload-box:hover{
+
+.upload-box:hover {
     border: 2.5px dashed var(--orange);
     color: var(--orange);
 }
-.upload-box img{
+
+.upload-box img {
     position: relative;
     width: 4vmax;
     height: auto;
     margin-bottom: 1vmax;
 }
-.form-grupo .upload-box p{
+
+.form-grupo .upload-box p {
     color: var(--text-tertiary);
 }
 
-.form-grupo.inline{
+.form-grupo.inline {
     position: relative;
     width: 100%;
     height: auto;
@@ -186,31 +204,33 @@ input[type="email"]{
     align-items: center;
 }
 
-.inline .box-1{
+.inline .box-1 {
     position: relative;
     width: 65%;
     height: auto;
 }
 
-.inline .box-2{
+.inline .box-2 {
     position: relative;
     width: 32%;
     height: auto;
 }
 
-.box-1 input, .box-2 input, .box-2 select{
+.box-1 input,
+.box-2 input,
+.box-2 select {
     margin-bottom: 2vmax;
 }
 
 
-.form-grupo .box h3{
+.form-grupo .box h3 {
     font-size: 1vmax;
     font-weight: 400;
     color: var(--text-secondary);
-    
+
 }
 
-.form-trilhas{
+.form-trilhas {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -220,7 +240,7 @@ input[type="email"]{
     height: auto;
 }
 
-.form-trilhas .box{
+.form-trilhas .box {
     position: relative;
     display: flex;
     justify-content: center;
@@ -234,20 +254,20 @@ input[type="email"]{
     cursor: pointer;
 }
 
-.form-trilhas .box img{
+.form-trilhas .box img {
     position: relative;
     width: 2.5vmax;
     height: auto;
     margin-bottom: 1vmax;
 }
 
-.form-trilhas .box:focus-within{
+.form-trilhas .box:focus-within {
     border: 0.16vmax solid var(--orange);
     transition: var(--smooth);
-    
+
 }
 
-.form-trilhas .box input[type="radio"]{
+.form-trilhas .box input[type="radio"] {
     position: absolute;
     top: 0.4vmax;
     left: 0.4vmax;
@@ -255,30 +275,30 @@ input[type="email"]{
     height: 1.2vmax;
 }
 
-.form-condicoes{
+.form-condicoes {
     position: relative;
     width: 100%;
     height: auto;
 }
 
-.form-condicoes input[type="checkbox"]{
+.form-condicoes input[type="checkbox"] {
     width: 1vmax;
     height: 1vmax;
     margin-right: 0.5vmax;
-    
+
 }
 
-.form-condicoes label{
+.form-condicoes label {
     font-size: 1vmax;
     font-weight: 400;
     color: var(--text-secondary);
 }
 
-.form-condicoes label span{
+.form-condicoes label span {
     color: var(--orange);
 }
 
-.buttons{
+.buttons {
     position: relative;
     width: 100%;
     height: auto;
@@ -288,7 +308,7 @@ input[type="email"]{
     margin: 3vmax 0;
 }
 
-.buttons button{
+.buttons button {
     position: relative;
     width: auto;
     height: auto;
@@ -298,28 +318,34 @@ input[type="email"]{
     cursor: pointer;
 }
 
-.buttons button:nth-child(1){
-border: 0.15vmax solid var(--orange);
-background-color: transparent;
-color: var(--orange);
-font-size: 1vmax;
-font-weight: 500;
+.buttons button:nth-child(1) {
+    border: 0.15vmax solid var(--orange);
+    background-color: transparent;
+    color: var(--orange);
+    font-size: 1vmax;
+    font-weight: 500;
 }
-.buttons button:nth-child(2){
-margin-left: 2vmax;
-border: 0.15vmax solid var(--orange);
-background-color: transparent;
-color: var(--orange);
-font-size: 1vmax; 
-font-weight: 500;
+
+.buttons button:nth-child(2) {
+    margin-left: 2vmax;
+    border: 0.15vmax solid var(--orange);
+    background-color: transparent;
+    color: var(--orange);
+    font-size: 1vmax;
+    font-weight: 500;
+    opacity: 0.5;
+    pointer-events: none;
 }
-#cancelar:hover, #inscrever:hover{
+
+#cancelar:hover,
+#inscrever:hover {
     background-color: var(--orange);
     color: var(--white);
 }
+
 /* ================ SEGUNDO CONTAINER ============== */
 
-.box-img{
+.box-img {
     position: fixed;
     top: 0;
     left: 50%;
@@ -336,14 +362,14 @@ font-weight: 500;
     overflow: hidden;
 }
 
-.box-img img{
+.box-img img {
     position: relative;
     width: auto;
     height: auto;
     object-fit: cover;
 }
 
-.box-img img:nth-child(2){
+.box-img img:nth-child(2) {
     width: 60%;
 }
 
@@ -351,28 +377,37 @@ font-weight: 500;
     display: block;
     margin-top: 5px;
     font-size: 14px;
-    color: #DC2626;
+    color: var(--semantic-error);
 }
 
-input.error, select.error {
-    border-color: #DC2626 !important;
+input.error,
+select.error {
+    border-color: var(--semantic-error) !important;
 }
 
 /* ================ RESPONSIVIDADE ============== */
 
 @media screen and (max-width: 992px) {
-    body{
+    body {
         flex-direction: column-reverse;
     }
 
-    h2, h3{
+    .form-grupo .fa-eye,
+    .fa-eye-slash {
+        left: 95%;
+        font-size: 14px;
+    }
+
+    h2,
+    h3 {
         font-size: var(--text-small) !important;
     }
-    .box-form{
+
+    .box-form {
         width: 100vw;
     }
 
-    .box-img{
+    .box-img {
         position: relative;
         width: 100vw;
         top: 0;
@@ -380,90 +415,96 @@ input.error, select.error {
         margin-bottom: 50px;
     }
 
-    .box-img img:nth-child(1){
+    .box-img img:nth-child(1) {
         width: auto;
     }
 
-    .box-img img:nth-child(2){
+    .box-img img:nth-child(2) {
         width: auto;
     }
 
-    .form-trilhas{
+    .form-trilhas {
         justify-content: space-around;
     }
 
-    .form-trilhas .box{
+    .form-trilhas .box {
         width: 400px;
         height: 200px;
         margin: 10px 0;
         border: 3px solid var(--bg-disabled);
     }
 
-    .form-trilhas .box input[type="radio"]{
+    .form-trilhas .box input[type="radio"] {
         top: 7px;
         left: 7px;
         width: 15px;
-        height: 15px; 
+        height: 15px;
     }
-    
-    .form-condicoes label{
+
+    .form-condicoes label {
         font-size: 12px;
     }
 }
 
 @media screen and (max-width: 498px) {
-    .box-form{
+
+    .form-grupo .fa-eye,
+    .fa-eye-slash {
+        left: 93%;
+    }
+
+    .box-form {
         padding: 20px;
     }
 
-    .icon-voltar h2{
+    .icon-voltar h2 {
         font-size: 18px !important;
     }
 
-    .text-title h1{
+    .text-title h1 {
         font-size: 20px !important;
     }
 
-    .text-title p{
+    .text-title p {
         font-size: 15px !important;
     }
-    
-    form h2{
+
+    form h2 {
         margin: 40px 0 10px 0;
     }
 
-    .upload-box p{
+    .upload-box p {
         font-size: 14px;
     }
-    
-    .box-img img:nth-child(1){
+
+    .box-img img:nth-child(1) {
         width: 90%;
     }
 
-    .form-trilhas .box{
+    .form-trilhas .box {
         width: 100%;
         height: 200px;
     }
 
-    .form-trilhas .box img{
+    .form-trilhas .box img {
         width: 50px;
     }
 
-    .form-trilhas .box h3{
+    .form-trilhas .box h3 {
         font-size: 16px !important;
     }
 
-    .buttons button{
+    .buttons button {
         padding: 12px 20px;
         font-size: 12px !important;
     }
 
-    .form-condicoes input[type="checkbox"]{
+    .form-condicoes input[type="checkbox"] {
         width: 15px;
         height: 15px;
     }
-    
-    .form-condicoes label{
+
+    .form-condicoes label {
         font-size: 12px;
     }
 }
