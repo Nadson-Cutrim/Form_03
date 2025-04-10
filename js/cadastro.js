@@ -1,3 +1,4 @@
+
 //================================ Função para formatar NOME ===================================
 
 function formatarTexto(texto) {
