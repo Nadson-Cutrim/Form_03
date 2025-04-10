@@ -275,21 +275,28 @@ cepInput.addEventListener('input', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form')
-
+    
     form.addEventListener('submit', function (event) {
+        event.preventDefault()
         const radioButtons = document.querySelectorAll('input[name="curso"]')
         let checked = false
 
         for (let i = 0; i < radioButtons.length; i++) {
             if (radioButtons[i].checked) {
                 checked = true
+                alert('Usuário cadastrado com sucesso!')
+                document.body.classList.add('fade-out')
+                setTimeout(() => {
+                    window.location.href = 'index.html'
+                }, 1000)
+                
                 break
             }
         }
 
         if (!checked) {
             alert('Por favor, selecione uma trilha de aprendizagem.')
-            event.preventDefault() // Impede o envio do formulário
+            
         }
     })
 })
