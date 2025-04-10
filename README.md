@@ -67,7 +67,8 @@ Form_03/
 Este projeto foi desenvolvido com fins educacionais, com o objetivo de aprimorar minhas habilidades em desenvolvimento front-end. Foi uma oportunidade de colocar em prática conceitos e técnicas aprendidas, e estou aberto a feedbacks e sugestões para melhorá-lo ainda mais! Se você tiver alguma ideia ou recomendação, sinta-se à vontade para compartilhar.
 
 
-Desenvolvido por [Nadson Cutrim 🦆](https://github.com/Nadson-Cutrim)🍀
-Desenvolvido por [Marcos Willy](https://github.com/MARCOSWILLY27)
+Desenvolvido por:
+[Nadson Cutrim 🦆](https://github.com/Nadson-Cutrim)🍀
+[Marcos Willy](https://github.com/MARCOSWILLY27)
 
 
