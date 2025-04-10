@@ -107,7 +107,7 @@ document.getElementById('email').addEventListener('input', () => {
         errorEmail.textContent = "❌ E-mail é válido"
         errorEmail.style.color = "#DC2626" // vermelho
     }
-    console.log(isValid)
+    
 })
 
 const validaEmail = (email) => {
@@ -174,8 +174,6 @@ senhaInput.addEventListener('input', () => {
 
 function validTamanhoSenha(senha) {
     const tamSenha = senha.value
-
-    console.log(tamSenha)
 
     if (tamSenha.length < 8) {
         senha.setCustomValidity('A senha deve ter no mínimo 8 caracteres.')
@@ -273,7 +271,7 @@ cepInput.addEventListener('input', function () {
 
 //======================== Função para validar o campo de radio button =========================
 
-// Seleciona todos os radio buttons com o nome "curso"
+//Seleciona todos os radio buttons com o nome "curso"
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form')

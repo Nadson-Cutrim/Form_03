@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
-// Usando o localStorage para acessar a página login
+// Autenticação do usuário
+// Verifica se o usuário já está cadastrado no localStorage
+// Caso contrário, exibe uma mensagem de erro
 const loginForm = document.getElementById('form-login');
 const cpfInput = document.getElementById('cpf');
 const senhaInput = document.getElementById('senha');
@@ -61,3 +63,4 @@ loginForm.addEventListener('submit', function(event) {
         alert('CPF ou senha inválidos!');
     }
 });
+
