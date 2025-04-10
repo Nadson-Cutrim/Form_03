@@ -33,7 +33,8 @@ Siga os passos abaixo para rodar o projeto no seu ambiente local:
 
 4. Ao abrir o `index.html`, faça o cadastro no formulário
    - após se cadastrar volte a página de login para acessar.
-   -⚠️ **Observação:** Esta versão do projeto suporta apenas o cadastro de um único usuário.
+
+⚠️ **Observação:** Esta versão do projeto suporta apenas o cadastro de um único usuário.
 
 
 ## 🛠️ Tecnologias Utilizadas
